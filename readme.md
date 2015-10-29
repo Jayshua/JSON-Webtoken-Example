@@ -4,6 +4,8 @@ This is a simple example implementation of JSON Web Token authentication. JSON W
 ## How to try it
 You'll need a client that can issue HTTP requests. (A browser won't work, I haven't written a client.) If you're a command line guy, [CURL](http://curl.haxx.se/) will work. If you prefer a GUI, my favorite is [PostMan](https://www.getpostman.com/).
 
+You'll need to install the modules with `npm install`.
+
 1. Issue a GET request to /secure to be denied access
 2. Issue a POST request to /signup with the body
    ```json
