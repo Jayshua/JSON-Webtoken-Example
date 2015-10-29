@@ -18,8 +18,8 @@ You'll need to install the modules with `npm install`.
 ## About It
 The application has three main functions:
 
-1. handleTokenRequest - Checks the user/login and issues a JWT if they are valid.
-2. handleSignup - Creates a user with the given username/password
-3. secureMiddleware - A module that checks a request for a valid JWT and rejects unauthorized requests. Can be applied to any route with `app.get("/secureRoute", secureMiddleware)` (or any app.method).
+1. handleTokenRequest (server.js) - Checks the user/login and issues a JWT if they are valid.
+2. handleSignup (server.js) - Creates a user with the given username/password
+3. secureMiddleware (secureMiddleware.js) - A module that checks a request for a valid JWT and rejects unauthorized requests. Can be applied to any route with `app.get("/secureRoute", secureMiddleware)` (or any app.method).
 
 (MIT License)
