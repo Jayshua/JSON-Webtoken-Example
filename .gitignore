@@ -1,2 +1,3 @@
 # Exclude the node modules folder
 node_modules/
+users/
