@@ -23,25 +23,27 @@ Try to get a secure address
 > curl localhost/secure
 < {"message":"Unauthorized - No Token"}
 
-Signup with the json in body.json (file must exist in current directory)
-> curl -X POST --data "@body.json" -H "Content-Type: application/json" localhost/signup
+Signup with the json info in body.json (file must exist in current directory)
+> curl -X POST --data "@exampleRequest.json" localhost/signup
 < [no response]
 
 Get a JWT
-> curl -X POST --data "@body.json" localhost/token
-< {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiamF5c2h1YSIsImlhdCI6MTQ0NjE3MzQ0N30.dI_mQTFoa1n-9TvlZPhSJUO6LIf-w-chVgykVgb1RcU"}
+> curl -X POST --data "@exampleRequest.json" localhost/token
+< {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibHVjeSIsImlhdCI6MTQ0NjE3NDMyOH0.rjOiHQcw2phL8YEjfwmjqlHD04LTCsmINz6zyi6F2SY"}
 
-Request secure address with access token
-> curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiamF5c2h1YSIsImlhdCI6MTQ0NjE3MzE1MH0.IMbZHZt_GF8w8AsuLIOwdoaLfxk1MRL-atVpmWCQs70" localhost/secure
+Request the secure address with an access token
+> curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibHVjeSIsImlhdCI6MTQ0NjE3NDMyOH0.rjOiHQcw2phL8YEjfwmjqlHD04LTCsmINz6zyi6F2SY" localhost/secure
 < {"message":"Successful Access"}
 ```
 
 ## Some things to try and think about
 1. Is the JWT valid after a server restart? If not, how could it be made so? If so, how could it be made invalid after a restart?
-2. Many JWT implementations were recently found to be flawed. More information on that flaw can be found at https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/
-3. If you create two servers, one can verify that you have successfully logged into the other with no communication between two servers. This is essentially what oAuth tries to solve, and one of the primary reasons for the JWT Standard. How could this be accomplished? (Rest assured, the solution to this question is much simpler than the oAuth protocol.)
+2. If a user deleted their account, how could you invalidate the JWT without keeping a record of all issued JWTs?
+3. How could you make a JWT invalid after 6 hours without keeping a record of all issued JWTs?
+4. Many JWT implementations were recently found to be flawed. More information on that flaw can be found at https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/
+5. If you create two servers, one can verify that you have successfully logged into the other with no communication between two servers. This is essentially what oAuth tries to solve, and one of the primary reasons for the JWT Standard. How could this be accomplished? (Rest assured, the solution to this question is much simpler than the oAuth protocol.)
 
-Some resources to help solve #3:
+Some resources to help solve the questions:
 
 - http://jwt.io/
 - https://www.npmjs.com/package/jsonwebtoken
