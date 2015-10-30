@@ -2,7 +2,7 @@
 This is a simple example implementation of [JSON Web Token Authentication](http://jwt.io/) ([RFC 7519](https://tools.ietf.org/html/rfc7519)). JSON Web Token is a stateless login/authentication standard. Basically, that means it lets a server verify who the client is without maintaining any records of who is logged in. This fits right in with the concepts behind REST APIs and HTTP in general. Plus, it's a really interesting standard!
 
 ## How to try it
-You'll need a client that can issue HTTP requests. (A browser won't work, I haven't written a client.) If you're a command line guy, [CURL](http://curl.haxx.se/) will work. If you prefer a GUI, my favorite is [PostMan](https://www.getpostman.com/).
+You'll need a client that can issue HTTP requests. (A browser won't work, I haven't written a client.) If you're a command line guy, [cURL](http://curl.haxx.se/) will work. If you prefer a GUI, my favorite is [PostMan](https://www.getpostman.com/).
 
 You'll need to install the modules with `npm install`.
 
@@ -17,7 +17,7 @@ You'll need to install the modules with `npm install`.
 3. Issue a POST request to /token to request a JWT. (Use the same body as the /signup request.)
 4. Put the JWT in an `Authorization` header and issue a GET request to /secure to see the secure content.
 
-## Example CURL requests
+## Example cURL requests
 ```
 Try to get a secure address
 > curl localhost/secure
@@ -25,7 +25,7 @@ Try to get a secure address
 
 Signup with the json info in body.json (file must exist in current directory)
 > curl -X POST --data "@exampleRequest.json" localhost/signup
-< [no response]
+< [200 OK]
 
 Get a JWT
 > curl -X POST --data "@exampleRequest.json" localhost/token
