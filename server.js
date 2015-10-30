@@ -156,7 +156,7 @@ app.use(bodyParser.json({type: "*/*"}));
 // Create secure routes
 app.get("/secure", secureMiddleware);
 app.get("/secure", (req, res) => {
-    res.text("Successful Access", res);
+    res.send({message: "Successful Access"});
 });
 
 // Create authentication routes
